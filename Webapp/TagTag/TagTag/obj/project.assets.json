@@ -12545,11 +12545,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bas\\source\\repos\\TagTag\\TagTag\\TagTag.csproj",
+      "projectUniqueName": "C:\\Users\\Bas\\Documents\\GitHub\\project7-8\\Webapp\\TagTag\\TagTag\\TagTag.csproj",
       "projectName": "TagTag",
-      "projectPath": "C:\\Users\\Bas\\source\\repos\\TagTag\\TagTag\\TagTag.csproj",
+      "projectPath": "C:\\Users\\Bas\\Documents\\GitHub\\project7-8\\Webapp\\TagTag\\TagTag\\TagTag.csproj",
       "packagesPath": "C:\\Users\\Bas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bas\\source\\repos\\TagTag\\TagTag\\obj\\",
+      "outputPath": "C:\\Users\\Bas\\Documents\\GitHub\\project7-8\\Webapp\\TagTag\\TagTag\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",

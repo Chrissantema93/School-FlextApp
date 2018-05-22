@@ -36,8 +36,19 @@
             </div>
         </div>
     </nav>
-    <div class="col-sm-10 col-sm-offset-1" style="color:white">
-        @RenderBody()
+    <div>
+        <div class="Side_Menu">
+            <div class="Avatar">
+
+            </div>
+            <div class="Info_Box">
+                <b>Naam</b><br />
+                Titel
+            </div>
+        </div>
+        <div class="Main_Container">
+            @RenderBody()
+        </div>
     </div>
 
     <environment include="Development">
