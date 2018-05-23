@@ -5784,7 +5784,7 @@
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
-      "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
+      "sha512": "JPlIi0J8FUa5WNk+w5//fj1FJTUYhmNPxOqrr8gZCCUA/9h3oNTS8b7X+4lTB4vvm2Xqx1zHU17OGMQbvI+fvA==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
       "files": [
@@ -12535,7 +12535,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bas\\.nuget\\packages\\": {},
+    "C:\\Users\\Sebastiaan\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
@@ -12545,18 +12545,18 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bas\\Documents\\GitHub\\project7-8\\Webapp\\TagTag\\TagTag\\TagTag.csproj",
+      "projectUniqueName": "C:\\Users\\Sebastiaan\\Documents\\GitHub\\project7-8\\Webapp\\TagTag\\TagTag\\TagTag.csproj",
       "projectName": "TagTag",
-      "projectPath": "C:\\Users\\Bas\\Documents\\GitHub\\project7-8\\Webapp\\TagTag\\TagTag\\TagTag.csproj",
-      "packagesPath": "C:\\Users\\Bas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bas\\Documents\\GitHub\\project7-8\\Webapp\\TagTag\\TagTag\\obj\\",
+      "projectPath": "C:\\Users\\Sebastiaan\\Documents\\GitHub\\project7-8\\Webapp\\TagTag\\TagTag\\TagTag.csproj",
+      "packagesPath": "C:\\Users\\Sebastiaan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Sebastiaan\\Documents\\GitHub\\project7-8\\Webapp\\TagTag\\TagTag\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Bas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Sebastiaan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],

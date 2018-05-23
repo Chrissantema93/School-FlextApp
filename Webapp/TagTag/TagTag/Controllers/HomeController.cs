@@ -19,12 +19,21 @@ namespace TagTag.Controllers
         {
             ViewData["Message"] = "Your application description page.";
 
-            return View();
+            TafelStatus Status = new TafelStatus { Tafelnaam = "TestTafel", Stoelen = new List<StoelInfo>() };
+            for (int i = 0; i < 8; i++)
+            {
+                Status.Stoelen.Add(new StoelInfo {  Bezet = TorF() });
+            }
+            return View(Status);
         }
 
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private bool TorF() {
+            return (new Random().Next(100) < 50);
         }
     }
 }
