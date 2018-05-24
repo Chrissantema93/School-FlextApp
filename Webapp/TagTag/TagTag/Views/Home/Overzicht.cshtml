@@ -1,9 +1,8 @@
-﻿@model TagTag.Models.TafelStatus;
+﻿@model TagTag.Models.TafelStatus
 @{
-    ViewData["Title"] = "Overzicht";
     Layout = "_UserLayout";
 }
-<h2>@ViewData["Title"]</h2>
+<h2>Overzicht</h2>
 <div class="Workplace_Area">
     <div class="Workplace_Table">
         <div style="margin-top: 5px">
@@ -12,7 +11,7 @@
                 if (Model.Stoelen.ElementAt(i).Bezet) {
                     <div class="Workplace_seat_Offset">
                         <div class="Workplace_Seat Taken_Seat">
-
+                            @(i + 1)
                         </div>
                     </div>
                 }
@@ -20,7 +19,7 @@
                 {
                     <div class="Workplace_seat_Offset">
                         <div class="Workplace_Seat Free_Seat">
-
+                            @(i + 1)
                         </div>
                     </div>
                 }
@@ -33,7 +32,7 @@
                 if (Model.Stoelen.ElementAt(i).Bezet) {
                     <div class="Workplace_seat_Offset">
                         <div class="Workplace_Seat Taken_Seat">
-
+                            @(i + 1)
                         </div>
                     </div>
                 }
@@ -41,7 +40,7 @@
                 {
                     <div class="Workplace_seat_Offset">
                         <div class="Workplace_Seat Free_Seat">
-
+                            @(i + 1)
                         </div>
                     </div>
                 }

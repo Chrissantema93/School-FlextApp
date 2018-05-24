@@ -17,7 +17,6 @@ namespace TagTag.Controllers
 
         public IActionResult Overzicht()
         {
-            ViewData["Message"] = "Your application description page.";
 
             TafelStatus Status = new TafelStatus { Tafelnaam = "TestTafel", Stoelen = new List<StoelInfo>() };
             for (int i = 0; i < 8; i++)

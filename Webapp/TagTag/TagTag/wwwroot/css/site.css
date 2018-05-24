@@ -52,14 +52,14 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    margin: 5px;
+    margin: 15px 5px;
     float: left
 }
 .Info_Box {
     float: left;
     width: calc(100% - 100px);
     height: 80px;
-    margin: 5px;
+    margin: 20px 5px;
     float: left;
     padding: 5px;
 }
