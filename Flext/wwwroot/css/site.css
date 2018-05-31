@@ -122,16 +122,15 @@
 @media screen and (min-width : 1px) and (max-width : 576px) {
     /*small*/
     .Side_Menu {
-        width: 200px;
-        height: calc(100vh - 50px);
+        width: 100%;
         background-color: #23273f;
-        float: left;
+        height: auto;
+        padding: 3rem 1rem;
     }
 
     .Main_Container {
-        width: calc(100vw - 200px);
+        width: 100vw;
         height: calc(100vh - 50px);
-        float: left;
     }
 
     .Info_Box {
@@ -141,5 +140,12 @@
         height: 80px;
         margin: 5px;
         float: left
+    }
+    .Workplace_Table {
+        width: 100%;
+        height: 300px;
+        background-color: #181b29;
+        margin: 1rem;
+        border-radius: .5rem;
     }
 }
