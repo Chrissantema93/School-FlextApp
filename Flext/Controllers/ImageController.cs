@@ -108,7 +108,6 @@ namespace Flext.Controllers
         {
             Console.WriteLine(Json);
             JObject obj = JObject.Parse(Json);
-            var list = obj["description"]["tags"].ToList();
             foreach (var tag in obj["description"]["tags"].ToList())
             {
                 Console.WriteLine(tag.ToString());
