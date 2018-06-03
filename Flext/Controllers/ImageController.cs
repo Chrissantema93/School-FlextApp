@@ -8,9 +8,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using Flext.Models;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Http;
-using Flext.Controllers;
 
 namespace Flext.Controllers
 {
@@ -51,10 +50,9 @@ namespace Flext.Controllers
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
 
-            var ding = await MakeAnalysisRequest(filePath);
+            ProcessJson(await MakeAnalysisRequest(filePath));
 
-            //ik return hier ff een Ok, maar hier komt eerst nog het processen van de json data. met dat waar velid mee bezig is
-            return Ok(ding);
+            return RedirectToAction("Overzicht","Home");
 
         }
         
@@ -67,7 +65,7 @@ namespace Flext.Controllers
                 // Request headers.
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 // Request parameters. A third optional parameter is "details".
-                string requestParameters = "visualFeatures=Categories,Description,Color";
+                string requestParameters = "visualFeatures=Categories,Description";
                 // Assemble the URI for the REST API Call.
                 string uri = uriBase + "?" + requestParameters;
 
@@ -108,7 +106,13 @@ namespace Flext.Controllers
 
         private static void ProcessJson(string Json)
         {
-            
+            Console.WriteLine(Json);
+            JObject obj = JObject.Parse(Json);
+            var list = obj["description"]["tags"].ToList();
+            foreach (var tag in obj["description"]["tags"].ToList())
+            {
+                Console.WriteLine(tag.ToString());
+            }
         }
 
 
