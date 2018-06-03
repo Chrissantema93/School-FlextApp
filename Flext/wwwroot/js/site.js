@@ -1,8 +1,8 @@
 ﻿function GetImageData() {
     $.ajax({
-        type: "GET",
-        url: '/Image/GetImageData/',
-        data: { imageFilePath: "C:/Users/Bas/Desktop/6d0369ad-c6e7-4901-ba26-62781f26801b.jpg" },
+        type: "POST",
+        url: '/Image/aquireFiles/',
+        data: { files: "C:/Users/Bas/Desktop/alles.jpg" },
         success: function (result) {
             document.getElementById('piellemuis').innerHTML = result;
         },

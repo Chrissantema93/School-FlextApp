@@ -2,14 +2,23 @@
     ViewData["Title"] = "Home Page";
     Layout = "_layout";
 }
+
 <h2>welkom nibba</h2>
 
-<button onclick="GetImageData()">
-    klik me
-</button>
 
-hi<input type="image" />
+<form id='tt' method="post" enctype="multipart/form-data" asp-controller="Image" asp-action="aquireFiles">
+    <div class="form-group">
+        <div class="col-md-10">
+            <p>Upload one or more files using this form:</p>
+            <input type="file" name="files" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Upload" />
+        </div>
+    </div>
+</form>
 
-  <div id="piellemuis">
-      {"Tafelnaam":"nibba","Stoelen":[{"Bezet":false},{"Bezet":true},{"Bezet":true},{"Bezet":false},{"Bezet":true},{"Bezet":false},{"Bezet":false},{"Bezet":true}]}
-  </div>
+
+

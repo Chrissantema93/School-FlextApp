@@ -9,10 +9,11 @@ using System.Net.Http.Headers;
 using System.Text;
 using Flext.Models;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
+using Flext.Controllers;
 
 namespace Flext.Controllers
 {
-
     public class ImageController : Controller
     {
 
@@ -26,13 +27,39 @@ namespace Flext.Controllers
             return View();
         }
 
-        [HttpGet]
-        public string GetImageData(string imageFilePath)
+        [HttpPost]
+        public async Task<IActionResult> aquireFiles(List<IFormFile> files)
         {
-            return MakeAnalysisRequest(imageFilePath).Result;
-        }
+            //hoeveelheid bytes de requested images waren
+            long size = files.Sum(f => f.Length);
 
-        static async Task<string> MakeAnalysisRequest(string imageFilePath)
+            // full path to file in temp location
+            // dit slaat een .temp bestand op in je temp file directory, af en toe leeg maken anders staat je pc zo vol
+            string filePath = Path.GetTempFileName();
+
+            foreach (var formFile in files)
+            {
+                if (formFile.Length > 0)
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await formFile.CopyToAsync(stream);
+                    }
+                }
+            }
+
+            // process uploaded files
+            // Don't rely on or trust the FileName property without validation.
+
+            var ding = await MakeAnalysisRequest(filePath);
+
+            //ik return hier ff een Ok, maar hier komt eerst nog het processen van de json data. met dat waar velid mee bezig is
+            return Ok(ding);
+
+        }
+        
+
+        private async Task<string> MakeAnalysisRequest(string imageFilePath)
         {
             try
             {
@@ -69,7 +96,7 @@ namespace Flext.Controllers
             }
         }
 
-        static byte[] GetImageAsByteArray(string imageFilePath)
+        private static byte[] GetImageAsByteArray(string imageFilePath)
         {
             using (FileStream fileStream =
                 new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
@@ -78,6 +105,13 @@ namespace Flext.Controllers
                 return binaryReader.ReadBytes((int)fileStream.Length);
             }
         }
+
+        private static void ProcessJson(string Json)
+        {
+            
+        }
+
+
     }
 
     static class Extensions

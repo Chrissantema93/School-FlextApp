@@ -15,6 +15,7 @@ namespace Flext.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Overzicht()
         {
 
