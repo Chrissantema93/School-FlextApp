@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using Flext.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Http;
 
@@ -18,8 +19,15 @@ namespace Flext.Controllers
 
         const string subscriptionKey = "fe233b1c64cc4844a5c6b16bb5dac3bd";
         const string uriBase = "https://westeurope.api.cognitive.microsoft.com/vision/v2.0/analyze";
+        private IDescriptionRepository IDescriptionRepo;
 
-        // GET: /<controller>/
+        public ImageController(IDescriptionRepository IDescriptRepo)
+        {
+            this.IDescriptionRepo = IDescriptRepo;
+        }
+        
+        
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -27,30 +35,27 @@ namespace Flext.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> aquireFiles(List<IFormFile> files)
+        public async Task<IActionResult> aquireFiles(IFormFile file) //TODO: add parameter voor stoelID
         {
             //hoeveelheid bytes de requested images waren
-            long size = files.Sum(f => f.Length);
+            long size = file.Length;
 
             // full path to file in temp location
             // dit slaat een .temp bestand op in je temp file directory, af en toe leeg maken anders staat je pc zo vol
             string filePath = Path.GetTempFileName();
-
-            foreach (var formFile in files)
+            
+            if (size > 0)
             {
-                if (formFile.Length > 0)
+                using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await formFile.CopyToAsync(stream);
-                    }
+                    await file.CopyToAsync(stream);
                 }
             }
 
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
 
-            ProcessJson(await MakeAnalysisRequest(filePath));
+            ProcessJson(await MakeAnalysisRequest(filePath),file.FileName); //TODO paramenter voor stoelID
 
             return RedirectToAction("Overzicht","Home");
 
@@ -104,17 +109,25 @@ namespace Flext.Controllers
             }
         }
 
-        private static void ProcessJson(string Json)
+        private void ProcessJson(string Json, string filename)
         {
-            Console.WriteLine(Json);
             JObject obj = JObject.Parse(Json);
-            foreach (var tag in obj["description"]["tags"].ToList())
-            {
-                Console.WriteLine(tag.ToString());
-            }
+
+            //TODO stoelID meegeven in model
+
+            IDescriptionRepo.SaveToDB(
+                new ImageDescription
+                {
+                    ImageWidth = Convert.ToInt16(obj["metadata"]["width"]),
+                    ImageHeihgt = Convert.ToInt16(obj["metadata"]["height"]),
+                    RequestId = obj["requestId"].ToString(),
+                    Tags = JsonConvert.SerializeObject(obj["description"]["tags"].ToList()),
+                    Timestamp = DateTime.Now,
+                    FileName = filename,
+                    Format = obj["metadata"]["format"].ToString()
+                }
+            );
         }
-
-
     }
 
     static class Extensions

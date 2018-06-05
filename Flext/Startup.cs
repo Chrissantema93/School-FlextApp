@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Flext.Models;
 
 namespace Flext
 {
@@ -22,6 +24,11 @@ namespace Flext
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddDbContext<ApplicatieDbContext>(options =>
+                options.UseNpgsql(Configuration["Data:FlextMainDB:ConnectionString"]));
+
+            services.AddTransient<IDescriptionRepository, EFImageDescriptionRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
