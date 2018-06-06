@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace Flext.Models
 {
-    //TODO : attribuut maken voor stoelID
     public class ImageDescription
     {
         public int ID { get; set; }
+        public int StoelId { get; set; }
         public int ImageWidth { get; set; }
         public int ImageHeihgt { get; set; }
         public string RequestId { get; set; }

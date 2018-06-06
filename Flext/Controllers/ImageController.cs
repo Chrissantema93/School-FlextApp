@@ -35,7 +35,7 @@ namespace Flext.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> aquireFiles(ImageUploadForm form) //TODO: add parameter voor stoelID
+        public async Task<IActionResult> aquireFiles(ImageUploadForm form) 
         {
             //hoeveelheid bytes de requested images waren
             long size = form.Image.Length;
@@ -55,7 +55,7 @@ namespace Flext.Controllers
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
 
-            ProcessJson(await MakeAnalysisRequest(filePath), form.Image.FileName); //TODO paramenter voor stoelID
+            ProcessJson(await MakeAnalysisRequest(filePath), form.Image.FileName, form.StoelId);
 
             return RedirectToAction("Overzicht","Home");
 
@@ -109,15 +109,15 @@ namespace Flext.Controllers
             }
         }
 
-        private void ProcessJson(string Json, string filename)
+        private void ProcessJson(string Json, string filename, int stoelID)
         {
             JObject obj = JObject.Parse(Json);
-
-            //TODO stoelID meegeven in model
+            
 
             IDescriptionRepo.SaveToDB(
                 new ImageDescription
                 {
+                    StoelId = stoelID,
                     ImageWidth = Convert.ToInt16(obj["metadata"]["width"]),
                     ImageHeihgt = Convert.ToInt16(obj["metadata"]["height"]),
                     RequestId = obj["requestId"].ToString(),
