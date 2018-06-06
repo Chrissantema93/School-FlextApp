@@ -118,8 +118,8 @@ namespace Flext.Controllers
                 new ImageDescription
                 {
                     StoelId = stoelID,
-                    ImageWidth = Convert.ToInt16(obj["metadata"]["width"]),
-                    ImageHeihgt = Convert.ToInt16(obj["metadata"]["height"]),
+                    ImageWidth = Convert.ToInt16(obj["metadata"]["width"].ToString()),
+                    ImageHeihgt = Convert.ToInt16(obj["metadata"]["height"].ToString()),
                     RequestId = obj["requestId"].ToString(),
                     Tags = JsonConvert.SerializeObject(obj["description"]["tags"].ToList()),
                     Timestamp = DateTime.Now,
