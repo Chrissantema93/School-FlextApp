@@ -35,7 +35,7 @@ namespace Flext.Controllers
         }
 
         [HttpPost]
-        public async Task<string> aquireFiles(ImageUploadForm form) 
+        public async Task<IActionResult> aquireFiles(ImageUploadForm form) 
         {
             //hoeveelheid bytes de requested images waren
             long size = form.Image.Length;
@@ -55,12 +55,9 @@ namespace Flext.Controllers
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
 
-            //ProcessJson(await MakeAnalysisRequest(filePath), form.Image.FileName, form.StoelId);
-            var ding = await MakeAnalysisRequest(filePath);
-            //ProcessJson(await MakeAnalysisRequest(filePath));
-            return ding;
+            ProcessJson(await MakeAnalysisRequest(filePath), form.Image.FileName, form.StoelId);
 
-            //return RedirectToAction("Overzicht","Home");
+            return RedirectToAction("Overzicht","Home");
 
         }
         
@@ -112,7 +109,7 @@ namespace Flext.Controllers
             }
         }
 
-        private void ProcessJson(string Json, string filename, int stoelID)
+        async private void ProcessJson(string Json, string filename, int stoelID)
         {
             JObject obj = JObject.Parse(Json);
             
