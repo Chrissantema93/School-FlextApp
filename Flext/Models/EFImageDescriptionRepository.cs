@@ -21,13 +21,13 @@ namespace Flext.Models
         }
         public IQueryable<ImageDescription> Detecties => context.Detecties;
 
-        public void RemoveFromDB(ImageDescription instance)
+        public void SaveToDB(ImageDescription instance)
         {
             context.Add(instance);
             context.SaveChanges();
         }
 
-        public void SaveToDB(ImageDescription instance)
+        public void RemoveFromDB(ImageDescription instance)
         {
             if (instance != null)
             {
