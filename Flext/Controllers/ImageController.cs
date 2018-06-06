@@ -35,10 +35,10 @@ namespace Flext.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> aquireFiles(IFormFile file) //TODO: add parameter voor stoelID
+        public async Task<IActionResult> aquireFiles(ImageUploadForm form) //TODO: add parameter voor stoelID
         {
             //hoeveelheid bytes de requested images waren
-            long size = file.Length;
+            long size = form.Image.Length;
 
             // full path to file in temp location
             // dit slaat een .temp bestand op in je temp file directory, af en toe leeg maken anders staat je pc zo vol
@@ -48,14 +48,14 @@ namespace Flext.Controllers
             {
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    await file.CopyToAsync(stream);
+                    await form.Image.CopyToAsync(stream);
                 }
             }
 
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
 
-            ProcessJson(await MakeAnalysisRequest(filePath),file.FileName); //TODO paramenter voor stoelID
+            ProcessJson(await MakeAnalysisRequest(filePath), form.Image.FileName); //TODO paramenter voor stoelID
 
             return RedirectToAction("Overzicht","Home");
 
