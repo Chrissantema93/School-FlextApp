@@ -37,27 +37,42 @@ namespace Flext.Controllers
         [HttpPost]
         public async Task<IActionResult> aquireFiles(ImageUploadForm form) 
         {
-            //hoeveelheid bytes de requested images waren
-            long size = form.Image.Length;
 
-            // full path to file in temp location
-            // dit slaat een .temp bestand op in je temp file directory, af en toe leeg maken anders staat je pc zo vol
-            string filePath = Path.GetTempFileName();
-            
-            if (size > 0)
+            if (ModelState.IsValid)
             {
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                if (form == null || form.Image == null || form.StoelId <= 0)
                 {
-                    await form.Image.CopyToAsync(stream);
+                    return Ok("de form was null, of iets was niet ingevuld");
                 }
+                //hoeveelheid bytes de requested images waren
+                long size = form.Image.Length;
+
+                // full path to file in temp location
+                // dit slaat een .temp bestand op in je temp file directory, af en toe leeg maken anders staat je pc zo vol
+                string filePath = Path.GetTempFileName();
+
+                if (size > 0)
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await form.Image.CopyToAsync(stream);
+                    }
+                }
+
+                if (size == 0)
+                {
+
+                }
+
+                // process uploaded files
+                // Don't rely on or trust the FileName property without validation.
+
+                ProcessJson(await MakeAnalysisRequest(filePath), form.Image.FileName, form.StoelId);
+
+                return RedirectToAction("Overzicht", "Home");
             }
-
-            // process uploaded files
-            // Don't rely on or trust the FileName property without validation.
-
-            ProcessJson(await MakeAnalysisRequest(filePath), form.Image.FileName, form.StoelId);
-
-            return RedirectToAction("Overzicht","Home");
+            else { return Ok("modelstate was inVELID, errortjeeee wollaah"); }
+            
 
         }
         

@@ -1,11 +1,11 @@
 ﻿@model Flext.Models.TafelStatus
 @{
-    Layout = "_UserLayout";
+    Layout = "_Layout";
 }
-<h2>Overzicht</h2>
+<h2 style="margin-right: 400px">Overzicht</h2>
 <div class="Workplace_Area">
     <div class="Workplace_Table">
-        <div style="margin-top: 5px">
+        <div style="margin-top: 13px">
             @for (int i = 0; i < 4; i++)
             {
                 if (Model.Stoelen.ElementAt(i).Bezet)
