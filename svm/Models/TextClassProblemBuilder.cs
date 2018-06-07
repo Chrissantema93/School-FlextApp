@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DataAccess;
 using libsvm;
 
-namespace svm.Controllers
+namespace svm.Models
 {
     public class TextClassProblemBuilder
     {
