@@ -26,11 +26,11 @@ namespace Flext.Controllers
             return new string[] { "value1", "value2" };
         }
         // POST api/<controller>
-        [HttpPost]
-        public async Task<string> Post(ImageUploadForm files)
-        {
-            var ctrl = new ImageController(IDescriptionRepo);
-            return await ctrl.aquireFiles(files);
-        }
+        //[HttpPost]
+        //public async Task<string> Post(ImageUploadForm files)
+        //{
+        //    var ctrl = new ImageController(IDescriptionRepo);
+        //    return await ctrl.aquireFiles(files);
+        //}
     }
 }
