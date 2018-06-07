@@ -15,7 +15,16 @@
     </div>
     <div class="form-group">
         <label asp-for="StoelId" class="control-label">stoelID</label><br />
-        <input asp-for="StoelId" type="number" />
+            <select asp-for="StoelId" style="color:black">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
         <span asp-validation-for="StoelId" class="text-danger"></span>
     </div>
     <div class="form-group">
