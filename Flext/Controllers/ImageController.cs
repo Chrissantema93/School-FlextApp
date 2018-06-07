@@ -124,7 +124,7 @@ namespace Flext.Controllers
             }
         }
 
-        private void ProcessJson(string Json, string filename, int stoelID)
+        async private void ProcessJson(string Json, string filename, int stoelID)
         {
             JObject obj = JObject.Parse(Json);
             
