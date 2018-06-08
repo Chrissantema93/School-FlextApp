@@ -37,47 +37,32 @@ namespace Flext.Controllers
         [HttpPost]
         public async Task<IActionResult> aquireFiles(ImageUploadForm form) 
         {
+            //hoeveelheid bytes de requested images waren
+            long size = form.Image.Length;
 
-            if (ModelState.IsValid)
-            {
-                if (form == null || form.Image == null || form.StoelId <= 0)
-                {
-                    return Ok("de form was null, of iets was niet ingevuld");
-                }
-                //hoeveelheid bytes de requested images waren
-                long size = form.Image.Length;
-
-                // full path to file in temp location
-                // dit slaat een .temp bestand op in je temp file directory, af en toe leeg maken anders staat je pc zo vol
-                string filePath = Path.GetTempFileName();
-
-                if (size > 0)
-                {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await form.Image.CopyToAsync(stream);
-                    }
-                }
-
-                if (size == 0)
-                {
-
-                }
-
-                // process uploaded files
-                // Don't rely on or trust the FileName property without validation.
-
-                ProcessJson(await MakeAnalysisRequest(filePath), form.Image.FileName, form.StoelId);
-
-                return RedirectToAction("Overzicht", "Home");
-            }
-            else { return Ok("modelstate was inVELID, errortjeeee wollaah"); }
+            // full path to file in temp location
+            // dit slaat een .temp bestand op in je temp file directory, af en toe leeg maken anders staat je pc zo vol
+            string filePath = Path.GetTempFileName();
             
+            if (size > 0)
+            {
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await form.Image.CopyToAsync(stream);
+                }
+            }
+
+            // process uploaded files
+            // Don't rely on or trust the FileName property without validation.
+
+            MakeAnalysisRequest(filePath, form.Image.FileName, form.StoelId);
+
+            return RedirectToAction("Overzicht","Home");
 
         }
         
 
-        private async Task<string> MakeAnalysisRequest(string imageFilePath)
+        private async void MakeAnalysisRequest(string imageFilePath, string filename, int stoelID)
         {
             try
             {
@@ -105,12 +90,12 @@ namespace Flext.Controllers
                 // Get the JSON response.
                 string contentString = await response.Content.ReadAsStringAsync();
                 // Display the JSON response.
-                return contentString;
+                ProcessJson(contentString,filename,stoelID);
             }
             catch (Exception e)
             {
                 Console.WriteLine("\n" + e.Message);
-                return null;
+                
             }
         }
 
@@ -124,10 +109,9 @@ namespace Flext.Controllers
             }
         }
 
-        async private void ProcessJson(string Json, string filename, int stoelID)
+        private void ProcessJson(string Json, string filename, int stoelID)
         {
             JObject obj = JObject.Parse(Json);
-            
 
             IDescriptionRepo.SaveToDB(
                 new ImageDescription

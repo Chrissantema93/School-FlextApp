@@ -18,14 +18,14 @@ namespace Flext.Controllers
     [Route("api/[controller]")]
     public class ImageAPIController : Controller
     {
-        private IDescriptionRepository IDescriptionRepo;
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-        // POST api/<controller>
+        //private IDescriptionRepository IDescriptionRepo;
+        //// GET: api/<controller>
+        //[HttpGet]
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
+        //// POST api/<controller>
         //[HttpPost]
         //public async Task<string> Post(ImageUploadForm files)
         //{
