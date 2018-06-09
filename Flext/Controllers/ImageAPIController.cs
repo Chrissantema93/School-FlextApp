@@ -10,6 +10,7 @@ using System.Text;
 using Flext.Models;
 using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Http;
+using System.Net;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,13 +20,19 @@ namespace Flext.Controllers
     public class ImageAPIController : Controller
     {
         //private IDescriptionRepository IDescriptionRepo;
-        //// GET: api/<controller>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-        //// POST api/<controller>
+        // GET: api/<controller>
+        [HttpPost]
+        public ActionResult Get()
+        {
+            string content;
+            using (var reader = new StreamReader(Request.Body))
+                content = reader.ReadToEnd();
+            //content is uiteindelijk de string met text die je moet hebben
+            Console.WriteLine(content);
+
+            return Ok();
+        }
+        // POST api/<controller>
         //[HttpPost]
         //public async Task<string> Post(ImageUploadForm files)
         //{
@@ -33,4 +40,5 @@ namespace Flext.Controllers
         //    return await ctrl.aquireFiles(files);
         //}
     }
+
 }
