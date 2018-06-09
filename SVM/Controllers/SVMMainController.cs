@@ -6,39 +6,35 @@ using DataAccess;
 using libsvm;
 using Microsoft.AspNetCore.Mvc;
 using svm.Models;
+using Newtonsoft.Json;
 
 
 namespace svm.Controllers
 {
     public class SVMMainController : Controller
     {
-        private static Dictionary<int, string> _predictionDictionary;
+        private static Dictionary<int, string> _predictionDictionary = new Dictionary<int, string> { { -1, "Angry" }, { 1, "Happy" } };
+        List<string> vocabulary;
+        TextClassProblemBuilder problemBuilder;
+        svm_problem problem;
+        C_SVC model;
+        Random rnd = new Random();
 
 
-        [HttpGet]
-        public IActionResult Index()
+        public SVMMainController()
         {
-            return View();
-        }
-
-        public void MainSVM()
-        {
-            Random rnd = new Random();
-
-
             const string dataFilePath = @"spamdata.csv";
             var dataTable = DataTable.New.ReadCsv(dataFilePath);
             List<string> x = dataTable.Rows.Select(row => row["Text"]).ToList();
 
             double[] y = dataTable.Rows.Select(row => double.Parse(row["IsSpam"])).ToArray();
 
-            var vocabulary = x.SelectMany(GetWords).Distinct().OrderBy(word => word).ToList();
-            var problemBuilder = new TextClassProblemBuilder();
-            var problem = problemBuilder.CreateProblem(x, y, vocabulary.ToList());
+            this.vocabulary = x.SelectMany(GetWords).Distinct().OrderBy(word => word).ToList();
+            this.problemBuilder = new TextClassProblemBuilder();
+            this.problem = this.problemBuilder.CreateProblem(x, y, this.vocabulary.ToList());
 
-            const double C = 1; 
-
-            var model = new C_SVC(problem, KernelHelper.LinearKernel(), C);
+            const double C = 1;
+            this.model = new C_SVC(this.problem, KernelHelper.LinearKernel(), C);
             var accuracy = model.GetCrossValidationAccuracy(10);
             Console.Clear();
             Console.WriteLine(new string('=', 50));
@@ -47,10 +43,15 @@ namespace svm.Controllers
             model.Export(string.Format(@"model_{0}_accuracy.model", accuracy));
 
             Console.WriteLine(new string('=', 50));
+        }
 
-            //This just takes the predicted value (-1 to 1) and translates to your categorization response
+        [HttpGet]
+        public double Predict(string jsonString)
+        {
+            //var list = JsonConvert.DeserializeObject(jsonString);
+            //TODO json string omzetten naar en lijst en meegeven aan string[] userInput
 
-            _predictionDictionary = new Dictionary<int, string> { { -1, "Angry" }, { 1, "Happy" } };
+
             double inc = 0;
             string[] userInput = { };
 
@@ -68,6 +69,7 @@ namespace svm.Controllers
             }
             Console.WriteLine("End result = {0}", (inc / userInput.Length));
             Console.WriteLine("");
+            return (inc / userInput.Length);
         }
 
         private static IEnumerable<string> GetWords(string x)

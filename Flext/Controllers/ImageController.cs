@@ -25,14 +25,6 @@ namespace Flext.Controllers
         {
             this.IDescriptionRepo = IDescriptRepo;
         }
-        
-        
-
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         [HttpPost]
         public async Task<IActionResult> aquireFiles(ImageUploadForm form) 
@@ -98,10 +90,8 @@ namespace Flext.Controllers
                     // Make the REST API call.
                     response = await client.PostAsync(uri, content);
                 }
-                // Get the JSON response.
-                string contentString = await response.Content.ReadAsStringAsync();
-                // Display the JSON response.
-                ProcessJson(contentString,filename,stoelID);
+                // Get the JSON response and process it.
+                ProcessJson(await response.Content.ReadAsStringAsync(), filename,stoelID);
             }
             catch (Exception e)
             {
@@ -120,6 +110,7 @@ namespace Flext.Controllers
             }
         }
 
+        //TODO testne of dit now wat in de database zet. volgens mij werkt het niet meer
         private void ProcessJson(string Json, string filename, int stoelID)
         {
             JObject obj = JObject.Parse(Json);

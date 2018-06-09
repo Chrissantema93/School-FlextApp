@@ -23,8 +23,27 @@ namespace Flext.Models
 
         public void SaveToDB(ImageDescription instance)
         {
-            context.Add(instance);
-            context.SaveChanges();
+            if (instance != null)
+            {
+                context.Add(instance);
+                context.SaveChanges();
+                Console.WriteLine("SAVE TO DATABASE");
+                Console.WriteLine("SAVE TO DATABASE");
+                Console.WriteLine("SAVE TO DATABASE");
+                Console.WriteLine("SAVE TO DATABASE");
+                Console.WriteLine("SAVE TO DATABASE");
+                Console.WriteLine("SAVE TO DATABASE");
+                Console.WriteLine("SAVE TO DATABASE");
+                Console.WriteLine("SAVE TO DATABASE");
+                Console.WriteLine("SAVE TO DATABASE");
+                Console.WriteLine("SAVE TO DATABASE");
+                Console.WriteLine("SAVE TO DATABASE");
+                Console.WriteLine("SAVE TO DATABASE");
+                Console.WriteLine("SAVE TO DATABASE");
+                Console.WriteLine("SAVE TO DATABASE");
+            }
+            else { throw new Exception(); }
+                
         }
 
         public void RemoveFromDB(ImageDescription instance)
@@ -34,6 +53,7 @@ namespace Flext.Models
                 context.Remove(instance);
                 context.SaveChanges();
             }
+            else { throw new Exception(); }
         }
     }
 }
