@@ -26,6 +26,26 @@ namespace Flext.Controllers
             this.IDescriptionRepo = IDescriptRepo;
         }
 
+
+        [HttpGet]
+        public IActionResult dbcall()
+        {
+            List<string> allcontainer = new List<string>();
+            var lijsten = IDescriptionRepo.Detecties.Select(x => x.Tags);
+            foreach (var lijst in lijsten)
+            {
+                List<string> tags = JsonConvert.DeserializeObject<List<string>>(lijst);
+                
+                foreach(string tag in tags)
+                {
+                    allcontainer.Add(tag);
+                }
+            }
+
+            return View(allcontainer.Distinct().OrderBy(x => x));
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> aquireFiles(ImageUploadForm form) 
         {
