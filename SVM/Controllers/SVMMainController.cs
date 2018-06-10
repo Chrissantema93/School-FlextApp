@@ -48,12 +48,10 @@ namespace svm.Controllers
         [HttpGet]
         public double Predict(string jsonString)
         {
-            //var list = JsonConvert.DeserializeObject(jsonString);
-            //TODO json string omzetten naar en lijst en meegeven aan string[] userInput
-
+            List<string> tags = JsonConvert.DeserializeObject<List<string>>(jsonString);
 
             double inc = 0;
-            string[] userInput = { };
+            string[] userInput = tags.ToArray();
 
             for (int i = 0; i < userInput.Length; i++)
             {
