@@ -10,7 +10,7 @@ namespace Flext.Models
         public int ID { get; set; }
         public int StoelId { get; set; }
         public int ImageWidth { get; set; }
-        public int ImageHeihgt { get; set; }
+        public int ImageHeight { get; set; }
         public string RequestId { get; set; }
         public string Tags { get; set; }
         public DateTime Timestamp { get; set; }

@@ -16,22 +16,22 @@ using System.Net;
 
 namespace Flext.Controllers
 {
-    [Route("api/[controller]")]
+    
     public class ImageAPIController : Controller
     {
         //private IDescriptionRepository IDescriptionRepo;
         // GET: api/<controller>
-        [HttpPost]
-        public ActionResult Get()
-        {
-            string content;
-            using (var reader = new StreamReader(Request.Body))
-                content = reader.ReadToEnd();
-            //content is uiteindelijk de string met text die je moet hebben
-            Console.WriteLine(content);
+        //[HttpPost]
+        //public ActionResult Get()
+        //{
+        //    string content;
+        //    using (var reader = new StreamReader(Request.Body))
+        //        content = reader.ReadToEnd();
+        //    //content is uiteindelijk de string met text die je moet hebben
+        //    Console.WriteLine(content);
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
         // POST api/<controller>
         //[HttpPost]
         //public async Task<string> Post(ImageUploadForm files)

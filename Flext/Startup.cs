@@ -8,11 +8,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Flext.Models;
+using System.Data.SqlClient;
 
 namespace Flext
 {
     public class Startup
     {
+        private string _connection = null;
+        
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -24,9 +28,17 @@ namespace Flext
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            
+
+            var builder = new SqlConnectionStringBuilder(
+            Configuration.GetConnectionString("FlextMainDB"));
+            builder.UserID = Configuration["UserID"];
+            builder.Password = Configuration["Password"];
+            _connection = builder.ConnectionString;
+
 
             services.AddDbContext<ApplicatieDbContext>(options =>
-                options.UseNpgsql(Configuration["Data:FlextMainDB:ConnectionString"]));
+                options.UseSqlServer(Configuration["Data:FlextMainDB:" + _connection]));
 
             services.AddTransient<IDescriptionRepository, EFImageDescriptionRepository>();
         }
