@@ -13,7 +13,7 @@ namespace svm.Controllers
 {
     public class SVMMainController : Controller
     {
-        private static Dictionary<int, string> _predictionDictionary = new Dictionary<int, string> { { -1, "Angry" }, { 1, "Happy" } };
+        private static Dictionary<int, string> _predictionDictionary = new Dictionary<int, string> { { -1, "vrij" }, { 1, "bezet" } };
         List<string> vocabulary;
         TextClassProblemBuilder problemBuilder;
         svm_problem problem;
@@ -48,12 +48,10 @@ namespace svm.Controllers
         [HttpGet]
         public double Predict(string jsonString)
         {
-            //var list = JsonConvert.DeserializeObject(jsonString);
-            //TODO json string omzetten naar en lijst en meegeven aan string[] userInput
-
+            List<string> tags = JsonConvert.DeserializeObject<List<string>>(jsonString);
 
             double inc = 0;
-            string[] userInput = { };
+            string[] userInput = tags.ToArray();
 
             for (int i = 0; i < userInput.Length; i++)
             {

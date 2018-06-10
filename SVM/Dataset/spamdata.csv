@@ -1,32 +1,69 @@
 Text,IsSpam
-hello,1
-kill,-1
-I wanna kill you,-1
-I would like to say hello,1
-Hi,1
-Hi how are you,1
-I kill you,-1
-suck it,-1
-kiss my ass,-1
-I am sad,-1
-Love to hate,-1
-I,1
-would,1
-like,1
-sad,-1
-joy,1
-happy,1
-love,1
-I love you,1
-I want to be your friend,1
-happy,1
-I like you,1
-angry,-1
-you,1
-me,1
-I hate you,-1
-you piss me off,-1
-kill you,-1
-dong,-1
-you,1
-hate,-1
+ball, -1
+bed, -1
+black, -1
+board, -1
+boat, -1
+book, 1
+box, 0
+boy, 1
+brown, 0
+bunch, 0
+cake, 0
+cat, 0
+computer, 0
+cutting, 0
+desk, 0
+different, 0
+display, 0
+food, 1
+front, 0
+game, 1
+glasses, 1
+group, 1
+holding, 0
+indoor, 0
+items, 0
+keyboard, 0
+knife, 0
+laptop, 1
+laying, 0
+little, 0
+living, 0
+lying, 0
+man, 1
+many, 0
+mouse, 0
+office, 0
+paper, 1
+pen, 1
+people, 1
+person, 1
+phone, 1
+photo, 0
+piece, 0
+plate, -1
+player, 0
+playing, 0
+remote, 0
+room, 0
+shirt, 1
+shoes, 1
+sitting, 1
+sleeping, 1
+small, 0
+standing, 1
+stuffed, 0
+surfing, 0
+table, 0
+using, 1
+variety, 0
+various, 0
+video, -1
+water, 0
+white, 0
+wii, 0
+woman, 1
+wood, 0
+wooden, 0
+young, 0
