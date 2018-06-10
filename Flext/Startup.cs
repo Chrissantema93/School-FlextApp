@@ -28,7 +28,7 @@ namespace Flext
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            
+
 
             var builder = new SqlConnectionStringBuilder(
             Configuration.GetConnectionString("FlextMainDB"));

@@ -23,7 +23,7 @@ namespace svm.Controllers
 
         public SVMMainController()
         {
-            const string dataFilePath = @"\Dataset\spamdata.csv";
+            const string dataFilePath = @"./Dataset/spamdata.csv";
             var dataTable = DataTable.New.ReadCsv(dataFilePath);
             List<string> x = dataTable.Rows.Select(row => row["Text"]).ToList();
 
@@ -44,15 +44,10 @@ namespace svm.Controllers
 
             Console.WriteLine(new string('=', 50));
         }
-
-        [Route("SVMMain/Predict/{jsonString}")]
+        
         [HttpGet]
-        public IActionResult Predict()
+        public double Predict(string jsonString)
         {
-            return Ok("hello");
-
-
-
             List<string> tags = JsonConvert.DeserializeObject<List<string>>(jsonString);
 
             double inc = 0;
