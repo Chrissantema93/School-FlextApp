@@ -52,7 +52,9 @@ namespace Flext.Controllers
                 // process uploaded files
                 // Don't rely on or trust the FileName property without validation.
 
-                MakeAnalysisRequest(filePath, form.Image.FileName, form.StoelId);
+                var jsonstring = MakeAnalysisRequest(filePath).Result;
+
+                ProcessJson(jsonstring, form.Image.FileName, form.StoelId);
 
                 return RedirectToAction("Overzicht", "Home");
             }
@@ -65,7 +67,7 @@ namespace Flext.Controllers
         }
         
 
-        private async void MakeAnalysisRequest(string imageFilePath, string filename, int stoelID)
+        private async Task<string> MakeAnalysisRequest(string imageFilePath)
         {
             try
             {
@@ -91,12 +93,17 @@ namespace Flext.Controllers
                     response = await client.PostAsync(uri, content);
                 }
                 // Get the JSON response and process it.
-                ProcessJson(await response.Content.ReadAsStringAsync(), filename,stoelID);
+                var contentstring = await response.Content.ReadAsStringAsync();
+
+                return contentstring;
+
+
+                //ProcessJson(await response.Content.ReadAsStringAsync(), filename,stoelID);
             }
             catch (Exception e)
             {
                 Console.WriteLine("\n" + e.Message);
-                
+                return null;
             }
         }
 
