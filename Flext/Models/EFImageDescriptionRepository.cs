@@ -27,20 +27,6 @@ namespace Flext.Models
             {
                 context.Add(instance);
                 context.SaveChanges();
-                Console.WriteLine("SAVE TO DATABASE");
-                Console.WriteLine("SAVE TO DATABASE");
-                Console.WriteLine("SAVE TO DATABASE");
-                Console.WriteLine("SAVE TO DATABASE");
-                Console.WriteLine("SAVE TO DATABASE");
-                Console.WriteLine("SAVE TO DATABASE");
-                Console.WriteLine("SAVE TO DATABASE");
-                Console.WriteLine("SAVE TO DATABASE");
-                Console.WriteLine("SAVE TO DATABASE");
-                Console.WriteLine("SAVE TO DATABASE");
-                Console.WriteLine("SAVE TO DATABASE");
-                Console.WriteLine("SAVE TO DATABASE");
-                Console.WriteLine("SAVE TO DATABASE");
-                Console.WriteLine("SAVE TO DATABASE");
             }
             else { throw new Exception(); }
                 
