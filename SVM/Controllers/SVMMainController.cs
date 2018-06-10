@@ -13,7 +13,7 @@ namespace svm.Controllers
 {
     public class SVMMainController : Controller
     {
-        private static Dictionary<int, string> _predictionDictionary = new Dictionary<int, string> { { -1, "Angry" }, { 1, "Happy" } };
+        private static Dictionary<int, string> _predictionDictionary = new Dictionary<int, string> { { -1, "vrij" }, { 1, "bezet" } };
         List<string> vocabulary;
         TextClassProblemBuilder problemBuilder;
         svm_problem problem;
