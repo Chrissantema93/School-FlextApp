@@ -30,15 +30,11 @@ namespace Flext
             services.AddMvc();
 
 
-            var builder = new SqlConnectionStringBuilder(
-            Configuration.GetConnectionString("FlextMainDB"));
-            builder.UserID = Configuration["UserID"];
-            builder.Password = Configuration["Password"];
-            _connection = builder.ConnectionString;
+          
 
 
             services.AddDbContext<ApplicatieDbContext>(options =>
-                options.UseSqlServer(Configuration["Data:FlextMainDB:" + _connection]));
+                options.UseSqlServer(Configuration["Data:FlextMainDB:ConnectionString"]));
 
             services.AddTransient<IDescriptionRepository, EFImageDescriptionRepository>();
         }
