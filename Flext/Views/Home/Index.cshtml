@@ -1,6 +1,5 @@
 ﻿@model Flext.Models.ImageUploadForm
 
-
 @{
     ViewData["Title"] = "Home Page";
     Layout = "_layout";
@@ -8,7 +7,7 @@
 
 <h2>welkom</h2>
 
-<form method="get" asp-action="Predict" asp-controller="SVMMain">
+<form method="get" asp-action="svmcall" asp-controller="SVMMain">
     <input class="btn btn-info" type="submit" value="TEstCVM output" />
 </form>
 <br /><br /><br />

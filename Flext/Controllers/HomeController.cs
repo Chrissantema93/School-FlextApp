@@ -39,6 +39,13 @@ namespace Flext.Controllers
                 // zolang de record er is zet hij hem op bezet.
                 // hier moet dus de SVM tussen komen doormiddel van een api call ofzo. 
                 // er moet dus nog in worden gebouwd dat er naar de inhoud word gekeken en aan de hand daarvan op bezet worden gezet.
+
+
+                //string jsonstring = DescriptRepo.Detecties.FirstOrDefault().Tags;
+
+                //return Ok("http://svmtesting.azurewebsites.net/api/values?jsontags=" + jsonstring);
+
+
                 if (query.Where(x => x.StoelId == i+1).FirstOrDefault() != null)
                 {
                     Status.Stoelen.Add(new StoelInfo { Bezet = true });

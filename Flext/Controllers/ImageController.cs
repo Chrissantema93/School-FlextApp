@@ -117,33 +117,9 @@ namespace Flext.Controllers
                 }
                 // process uploaded files
                 // Don't rely on or trust the FileName property without validation.
-
                 
-
-
                 var jsonstring = MakeAnalysisRequest(filePath).Result;
 
-
-                JObject objtest = JObject.Parse(jsonstring);
-
-                Debug.WriteLine("=============================================");
-                string newlist1 = JsonConvert.SerializeObject(objtest["description"]["tags"].ToList());
-
-                IList<string> newlist = newlist1.Split(',');
-                
-
-                foreach (string i in newlist)
-                {
-                    //var news2 = HttpGet("http://svmtesting.azurewebsites.net/api/values?test=" + "video");
-                    //Debug.WriteLine(Convert.ToDouble(news2) / 10);
-                    string final = Convert.ToString(i);
-                    i.Replace("[]", "");
-                    
-                    Debug.WriteLine("http://svmtesting.azurewebsites.net/api/values?test={0}&test={1}" + i);
-                }
-
-
-                Debug.WriteLine("=============================================");
                 ProcessJson(jsonstring, form.Image.FileName, form.StoelId);
 
                 return RedirectToAction("Overzicht", "Home");
@@ -155,7 +131,6 @@ namespace Flext.Controllers
 
 
         }
-
 
         private void ProcessJson(string Json, string filename, int stoelID)
         {
@@ -174,15 +149,6 @@ namespace Flext.Controllers
                     Format = obj["metadata"]["format"].ToString()
                 }
             );
-        }
-
-        public static string HttpGet(string URI)
-        {
-            System.Net.WebRequest req = System.Net.WebRequest.Create(URI);
-            //req.Proxy = new System.Net.WebProxy(ProxyString, true); //true means no proxy
-            System.Net.WebResponse resp = req.GetResponse();
-            System.IO.StreamReader sr = new System.IO.StreamReader(resp.GetResponseStream());
-            return sr.ReadToEnd().Trim();
         }
     }
 
