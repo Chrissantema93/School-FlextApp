@@ -1,0 +1,12 @@
+C:\Users\Chrisw10\Source\Repos\project7-8\Flext\bin\Debug\netcoreapp2.0\Flext.deps.json
+C:\Users\Chrisw10\Source\Repos\project7-8\Flext\bin\Debug\netcoreapp2.0\Flext.runtimeconfig.json
+C:\Users\Chrisw10\Source\Repos\project7-8\Flext\bin\Debug\netcoreapp2.0\Flext.runtimeconfig.dev.json
+C:\Users\Chrisw10\Source\Repos\project7-8\Flext\bin\Debug\netcoreapp2.0\Flext.dll
+C:\Users\Chrisw10\Source\Repos\project7-8\Flext\bin\Debug\netcoreapp2.0\Flext.pdb
+C:\Users\Chrisw10\Source\Repos\project7-8\Flext\obj\Debug\netcoreapp2.0\Flext.csproj.CoreCompileInputs.cache
+C:\Users\Chrisw10\Source\Repos\project7-8\Flext\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Chrisw10\Source\Repos\project7-8\Flext\obj\Debug\netcoreapp2.0\Flext.AssemblyInfoInputs.cache
+C:\Users\Chrisw10\Source\Repos\project7-8\Flext\obj\Debug\netcoreapp2.0\Flext.AssemblyInfo.cs
+C:\Users\Chrisw10\Source\Repos\project7-8\Flext\obj\Debug\netcoreapp2.0\Flext.dll
+C:\Users\Chrisw10\Source\Repos\project7-8\Flext\obj\Debug\netcoreapp2.0\Flext.pdb
+C:\Users\Chrisw10\Source\Repos\project7-8\Flext\obj\Debug\netcoreapp2.0\Flext.csprojAssemblyReference.cache

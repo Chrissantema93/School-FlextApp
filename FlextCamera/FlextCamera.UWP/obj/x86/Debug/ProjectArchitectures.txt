@@ -1,0 +1,1 @@
+J:\Coding\Project78\FlextCamera\FlextCamera\FlextCamera.UWP\FlextCamera.UWP.csproj;x86
