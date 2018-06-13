@@ -28,10 +28,7 @@ namespace Flext
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
-
-          
-
+            
 
             services.AddDbContext<ApplicatieDbContext>(options =>
                 options.UseSqlServer(Configuration["Data:FlextMainDB:ConnectionString"]));
