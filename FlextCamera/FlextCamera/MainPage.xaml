@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlextCamera.MainPage">
+
+    <ScrollView>
+
+        <StackLayout Spacing="10" Padding="10" VerticalOptions="End" >
+            <Picker Title="Kies een flexplek" SelectedIndexChanged="OnPickerSelectedIndexChanged" >
+                <Picker.Items>
+                    <x:String>Flexplek 1</x:String>
+                    <x:String>Flexplek 2</x:String>
+                    <x:String>Flexplek 3</x:String>
+                    <x:String>Flexplek 4</x:String>
+                    <x:String>Flexplek 5</x:String>
+                    <x:String>Flexplek 6</x:String>
+                    <x:String>Flexplek 7</x:String>
+                    <x:String>Flexplek 8</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button x:Name="takePhoto" Text="Take Photo" />
+            
+            <Image x:Name="image"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
