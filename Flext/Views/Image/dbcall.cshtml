@@ -1,0 +1,12 @@
+﻿@model IEnumerable<string>
+@{
+    ViewData["Title"] = "dbcall";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>dbcall, alle distinct tags die in de database zitten atm</h2>
+@foreach(string item in Model)
+{
+    <p>@item</p>
+
+}

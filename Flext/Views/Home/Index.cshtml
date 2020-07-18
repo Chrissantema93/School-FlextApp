@@ -1,0 +1,48 @@
+﻿@model Flext.Models.ImageUploadForm
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_layout";
+}
+
+<h2>welkom</h2>
+
+<form method="get" asp-action="svmcall" asp-controller="SVMMain">
+    <input class="btn btn-info" type="submit" value="TEstCVM output" />
+</form>
+<br /><br /><br />
+<form method="get" asp-action="dbcall" asp-controller="Image">
+    alle tags uit alle records uit de database samengevoegd weergeven (distinct)
+    <input class="btn btn-info" type="submit" value="TEstDB" />
+</form>
+<br /><br /><br />
+<form id='tt' method="post" enctype="multipart/form-data" asp-controller="Image" asp-action="aquireFiles">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Image" class="control-label">Upload one or more files using this form:</label>
+        <input asp-for="Image" type="file" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="StoelId" class="control-label">stoelID</label><br />
+        <select asp-for="StoelId" style="color:black">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
+        <span asp-validation-for="StoelId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input class="btn btn-info" type="submit" value="Upload" />
+        </div>
+    </div>
+</form>
+
+
+

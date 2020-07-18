@@ -1,0 +1,62 @@
+﻿@model Flext.Models.TafelStatus
+@{
+    Layout = "_Layout";
+}
+<div style="margin-right: 100px">
+    <h2>Overzicht</h2>
+    <div class="legend_box_offset">
+        <div class="legend_box Free_Seat"></div> <span class="legend_box_text">Beschikbaar</span>
+    </div>
+    <div class="legend_box_offset">
+        <div class="legend_box Taken_Seat"></div> <span class="legend_box_text">Bezet</span>
+    </div>
+    <div class="legend_box_offset">
+        <div class="legend_box Unset_Seat"></div> <span class="legend_box_text">Unset</span>
+    </div>
+</div>
+
+<div class="Workplace_Area">
+    <div class="Workplace_Table">
+        <div style="margin-top: 13px">
+
+            @for (int i = 0; i < (Model.Stoelen.Count < 4 ? Model.Stoelen.Count : 4); i++)
+            {
+                string className = "Unset_Seat";
+                if (Model.Stoelen.ElementAt(i) != null)
+                {
+                    if (Model.Stoelen.ElementAt(i).Bezet) { className = "Taken_Seat"; }
+                    else { className = "Free_Seat"; }
+                }
+                <div class="Workplace_seat_Offset">
+                    <div class="Workplace_Seat @(className)">
+                        <div class="Seat_Identifier">@(i + 1)</div>
+                    </div>
+                </div>
+
+            }
+        </div>
+        <div style="margin-top: 135px">
+            <center>
+                <h2>@Model.Tafelnaam</h2>
+            </center>
+        </div>
+        <div style="margin-top: 60px">
+            @for (int i = 4; i < (Model.Stoelen.Count < 8 ? Model.Stoelen.Count : 8); i++)
+            {
+                string className = "Unset_Seat";
+                if (Model.Stoelen.ElementAt(i) != null)
+                {
+                    if (Model.Stoelen.ElementAt(i).Bezet) { className = "Taken_Seat"; }
+                    else { className = "Free_Seat"; }
+                }
+                <div class="Workplace_seat_Offset">
+                    <div class="Workplace_Seat @(className)">
+                        <div class="Seat_Identifier">@(i + 1)</div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+
+</div>
