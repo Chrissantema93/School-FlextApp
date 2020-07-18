@@ -1,0 +1,8 @@
+J:\Coding\Project78\FlextCamera\FlextCamera\FlextCamera.iOS\obj\iPhoneSimulator\Debug\ibtool\_BundleResourceWithLogicalName.items
+J:\Coding\Project78\FlextCamera\FlextCamera\FlextCamera.iOS\obj\iPhoneSimulator\Debug\actool\_PartialAppManifest.items
+J:\Coding\Project78\FlextCamera\FlextCamera\FlextCamera.iOS\obj\iPhoneSimulator\Debug\actool\_BundleResourceWithLogicalName.items
+J:\Coding\Project78\FlextCamera\FlextCamera\FlextCamera.iOS\obj\iPhoneSimulator\Debug\coremlc\_PartialAppManifest.items
+J:\Coding\Project78\FlextCamera\FlextCamera\FlextCamera.iOS\obj\iPhoneSimulator\Debug\coremlc\_BundleResourceWithLogicalName.items
+J:\Coding\Project78\FlextCamera\FlextCamera\FlextCamera.iOS\obj\iPhoneSimulator\Debug\optimized\
+J:\Coding\Project78\FlextCamera\FlextCamera\FlextCamera.iOS\obj\iPhoneSimulator\Debug\FlextCamera.iOS.csprojAssemblyReference.cache
+J:\Coding\Project78\FlextCamera\FlextCamera\FlextCamera.iOS\obj\iPhoneSimulator\Debug\FlextCamera.iOS.csproj.CoreCompileInputs.cache
